@@ -1,10 +1,18 @@
 from typing import Callable
 from PIL import Image
+from random import randint
 
 IMG_HEIGHT = 256
 
 # borrowed from
 # https://stackoverflow.com/a/58382956
+def gen_rand(x: int, y: int) -> tuple[int, int, int]:
+    return (
+        randint(0, 255),
+        randint(0, 255),
+        randint(0, 255)
+    )
+
 def gen_pixel_rainbow(x: int, y: int) -> tuple[int, int, int]:
     p = (x % 255,
          y % 255,
@@ -22,10 +30,36 @@ def generate_img(width: int,
 
     img.save(path)
 
+def mid_stripe(x: int, y: int) -> tuple[int, int, int]:
+    r, g, b = 0, 0, 0
+    if y == 200:
+        r = 200
+        g = 50
+        b = 29
+    return (r, g, b)
+
+def gen_horiz(x: int, y: int) -> tuple[int, int, int]:
+    return (
+        x % 255,
+        x % 255,
+        x % 255
+    )
+
+def gen_tri_grad(x: int, y: int) -> tuple[int, int, int]:
+    return (
+        x % 255 - y,
+        x % 255 - y,
+        x % 255 - y
+    )
+
 def main():
     generate_img(256, gen_pixel_rainbow, "test_img1.png")
     generate_img(1000, lambda x, y: (100, 200, 50), "test_img2.png")
     generate_img(2000, gen_pixel_rainbow, "test_img3.png")
+    generate_img(2000, gen_rand, "rand_img.png")
+    generate_img(2000, gen_tri_grad, "tri_grad.png")
+    generate_img(2000, gen_horiz, "grad.png")
+    generate_img(2000, mid_stripe, "stripe_grad.png")
     return
 
 if __name__ == "__main__":
