@@ -52,6 +52,15 @@ def gen_tri_grad(x: int, y: int) -> tuple[int, int, int]:
         x % 255 - y
     )
 
+def gen_three_stripe(x: int, y: int) -> tuple[int, int, int]:
+    r, g, b = 0, 0, 0
+    if y == 180 or y == 186: # or y == 205:
+        r = 255
+        g = 255
+        b = 0
+    return (r, g, b)
+
+
 def main():
     generate_img(256, gen_pixel_rainbow, "test_img1.png")
     generate_img(1000, lambda x, y: (100, 200, 50), "test_img2.png")
@@ -60,6 +69,7 @@ def main():
     generate_img(2000, gen_tri_grad, "tri_grad.png")
     generate_img(2000, gen_horiz, "grad.png")
     generate_img(2000, mid_stripe, "stripe_grad.png")
+    generate_img(2000, gen_three_stripe, "three_stripe.png")
     return
 
 if __name__ == "__main__":
