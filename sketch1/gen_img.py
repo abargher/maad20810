@@ -30,9 +30,31 @@ def generate_img(width: int,
 
     img.save(path)
 
-reds = ([(180, i) for i in range(0, 200)] +
-        [(160, i) for i in range(200, 400)] +
-        [(165, i) for i in range(400, 2000)])
+reds = (
+    [(180, i) for i in range(0, 200)] +
+
+    [(160, i) for i in range(200, 400)] +
+
+    [(165, i) for i in range(400, 600)] +
+
+    [(175, i) for i in range(600, 800)] +
+
+    [(170, i) for i in range(800, 1000)] +
+
+    [(155, i) for i in range(1000, 1200)] +
+
+    [(150, i) for i in range(1200, 1300)] +
+    [(170, i) for i in range(1200, 1300)] +
+
+    [(152, i) for i in range(1300, 1400)] +
+
+    [(155, i) for i in range(1400, 1600)] +
+
+    [(185, i) for i in range(1600, 1800)] +
+    [(165, i) for i in range(1600, 1800)] +
+
+    [(160, i) for i in range(1800, 2000)]
+)
 
 def mid_stripe(x: int, y: int) -> tuple[int, int, int]:
     r, g, b = 0, 0, 0
