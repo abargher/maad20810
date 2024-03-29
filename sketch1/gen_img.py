@@ -30,11 +30,15 @@ def generate_img(width: int,
 
     img.save(path)
 
+reds = ([(180, i) for i in range(0, 200)] +
+        [(160, i) for i in range(200, 400)] +
+        [(165, i) for i in range(400, 2000)])
+
 def mid_stripe(x: int, y: int) -> tuple[int, int, int]:
     r, g, b = 0, 0, 0
     if y == 200:
         r = 200
-        g = 50
+        g = 0
         b = 29
     return (r, g, b)
 
@@ -54,7 +58,8 @@ def gen_tri_grad(x: int, y: int) -> tuple[int, int, int]:
 
 def gen_three_stripe(x: int, y: int) -> tuple[int, int, int]:
     r, g, b = 0, 0, 0
-    if y == 180 or y == 186: # or y == 205:
+    if (y, x) in reds:
+    # if y == 180 or y == 186: # or y == 205:
         r = 255
         g = 255
         b = 0
