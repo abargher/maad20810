@@ -34,6 +34,8 @@ reds = (
     [(180, i) for i in range(0, 200)] +
 
     [(160, i) for i in range(200, 400)] +
+    [(170, i) for i in range(200, 400)] +
+    [(90, i) for i in range(200, 400)] +
 
     [(165, i) for i in range(400, 600)] +
 
@@ -45,6 +47,7 @@ reds = (
 
     [(150, i) for i in range(1200, 1300)] +
     [(170, i) for i in range(1200, 1300)] +
+    [(70, i) for i in range(1200, 1300)] +
 
     [(152, i) for i in range(1300, 1400)] +
 
@@ -83,8 +86,8 @@ def gen_three_stripe(x: int, y: int) -> tuple[int, int, int]:
     if (y, x) in reds:
     # if y == 180 or y == 186: # or y == 205:
         r = 255
-        g = 255
-        b = 0
+        g = 0
+        b = 255
     return (r, g, b)
 
 
